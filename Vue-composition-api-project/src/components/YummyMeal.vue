@@ -1,24 +1,35 @@
-<script>
-export default {
-    props: {
-        name: String,
-        price: Number,
-    },
+<script setup>
 
-    setup(props, { emit }) {
-       const addToCart = () => emit("addToCart", props.name);
-       return { addToCart };
-    }
-}
+const props = defineProps({
+    name: String,
+    price: Number,
+});
+
+const emit = defineEmits(["addToCart"])
+
+import YummyMealPrice from './YummyMealPrice.vue';
+
+const addToCart = () => emit("addToCart", props.name);
+
 </script>
 
 
 <template>
     <p>
         <strong>{{ name }}</strong>
-        {{ price }}
-        <button @click="addToCart">Add to Cart</button>
+        <YummyMealPrice :price="price" />
+        <button @click="addToCart" class="btn btn-add">Add to Cart</button>
     </p>
 </template>
 
-<style scoped></style>
+<style scoped>
+.btn-add {
+    background-color: var( --color-text);
+    color: black;
+}
+
+.btn-add:hover {
+    background-color: var(--vt-c-white-mute);
+    transition: all 0.3s ease-in-out;
+} 
+</style>
