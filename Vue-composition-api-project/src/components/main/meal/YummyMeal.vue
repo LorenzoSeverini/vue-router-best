@@ -1,4 +1,5 @@
 <script setup>
+import YummyMealPrice from '@/components/main/meal/YummyMealPrice.vue';
 
 const props = defineProps({
     name: String,
@@ -6,9 +7,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["addToCart"])
-
-import YummyMealPrice from './YummyMealPrice.vue';
-
 const addToCart = () => emit("addToCart", props.name);
 
 </script>

@@ -10,8 +10,6 @@ const pricePretty = computed(
     () => `${currencySymbol.value}${props.price.toFixed(2)}`
 );
 
-// export default {
-// }
 </script>
 
 <template>
