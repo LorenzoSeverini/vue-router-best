@@ -30,14 +30,12 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 
 main {
-  margin-top: 6.25rem;
-  height: calc(100vh - 6.25rem - 3.125rem - 6.25rem);
-  overflow: auto;
-  scroll-behavior: smooth;
+  margin: 6.25rem 0 3.125rem 0;
+  height: calc(100vh - 6.25rem - 3.125rem );
 }
 
 footer {
@@ -46,7 +44,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;

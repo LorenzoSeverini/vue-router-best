@@ -7,7 +7,7 @@ const props = defineProps ({
 
 const currencySymbol = inject('currencySymbol');
 const pricePretty = computed(
-    () => `${currencySymbol.value}${props.price.toFixed(2)}`
+    () => `${props.price.toFixed(2)} ${currencySymbol.value}`
 );
 
 </script>
