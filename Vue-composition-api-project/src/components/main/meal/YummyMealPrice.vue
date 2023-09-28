@@ -13,7 +13,7 @@ const pricePretty = computed(
 </script>
 
 <template>
-    <span>{{ pricePretty }}</span>
+    <span><strong>Price:</strong> {{ pricePretty }} </span>
 </template>
 
 <style scoped></style>

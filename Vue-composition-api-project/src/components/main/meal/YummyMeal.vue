@@ -4,6 +4,7 @@ import YummyMealPrice from '@/components/main/meal/YummyMealPrice.vue';
 const props = defineProps({
     name: String,
     price: Number,
+    description: String,
 });
 
 const emit = defineEmits(["addToCart"])
@@ -15,6 +16,7 @@ const addToCart = () => emit("addToCart", props.name);
 <template>
     <p>
         <strong>{{ name }}</strong>
+        <p><strong>Description:</strong> {{ description }} </p>
         <YummyMealPrice :price="price" />
         <button @click="addToCart" class="btn btn-add">Add to Cart</button>
     </p>

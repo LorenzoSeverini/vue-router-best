@@ -14,10 +14,10 @@ const currencySymbol = ref("€");
 const cart = reactive([])
 const meals= reactive([
   { name: "Hamburger 505 🍔", price: 7.50, description:"Home-Made tipical 505 burger"},
-  { name:"Cheese Burger 🧀", price: 5.50, description:""},
-  { name:"Double Cheese Burger 🧀🧀", price: 5.90, description:""},
-  { name:"Vegetarian Burger 🥕", price: 5.00, description:""},
-  { name:"Vegan Burger 🍅", price: 6.5, description:""},
+  { name:"Cheese Burger 🧀", price: 5.50, description:"Delicious Cheese Burger classic style"},
+  { name:"Double Cheese Burger 🧀🧀", price: 5.90, description:"Double Cheese Burger with italian cheese"},
+  { name:"Vegetarian Burger 🥕", price: 5.00, description:"Vegetarian Burger with eggs, beans and delicous suaces home-made by chef"},
+  { name:"Vegan Burger 🍅", price: 6.5, description:"Vegan burger with a special selection of seasonal veggies"},
 ]);
 
 // Function to calculate the converted price
@@ -42,51 +42,52 @@ provide("currencySymbol", currencySymbol)
 </script>
 
 <template>
-      <!-- choose currency -->
-      <div class="currency-container">
-      <p>Choose your currency</p>
-      <div class="currency-item">
-        <label for="currencySymbol">Currency :</label>
-        <select id="currencySymbol" v-model="currencySymbol">
-          <option value="€">Euro (€)</option>
-          <option value="$">Dollars ($)</option>
-          <option value="£">Pound (£)</option>
-        </select>
-      </div>
+  <!-- choose currency -->
+  <div class="currency-container">
+    <p>Choose your currency</p>
+    <div class="currency-item">
+      <label for="currencySymbol">Currency :</label>
+      <select id="currencySymbol" v-model="currencySymbol">
+        <option value="€">Euro (€)</option>
+        <option value="$">Dollars ($)</option>
+        <option value="£">Pound (£)</option>
+      </select>
     </div>
+  </div>
     
-    <!-- List of meals -->
-    <div class="meal-container">
-      <YummyMeal 
-        v-for="meal in meals" 
-        :name="meal.name" 
-        :description="meal.description"
-        :price="getConvertedPrice(meal.price)"
-        @addToCart="addMealToCart"
-        class="meal"
-      />
-    </div>
-
-    <!-- ShoppingCart Component -->
-    <ShoppingCart
-        v-if="cart.length > 0"
-        :cart="cart"
-        :currencySymbol="currencySymbol"
-        :getConvertedPrice="getConvertedPrice"
-        :removeMeal="removeMealFromCart"
-        :totalCartPrice="totalCartPrice"
+  <!-- List of meals -->
+  <div class="meal-container">
+    <YummyMeal 
+      v-for="meal in meals" 
+      :key="meal.name"
+      :name="meal.name" 
+      :description="meal.description"
+      :price="getConvertedPrice(meal.price)"
+      @addToCart="addMealToCart"
+      class="meal"
     />
+  </div>
 
-    <div v-else>
-        Shopping cart is empty!
-        <br>
-        Add Something delicious 🍔
-    </div>
+  <!-- ShoppingCart Component -->
+  <ShoppingCart
+    v-if="cart.length > 0"
+    :cart="cart"
+    :currencySymbol="currencySymbol"
+    :getConvertedPrice="getConvertedPrice"
+    :removeMeal="removeMealFromCart"
+    :totalCartPrice="totalCartPrice"
+  />
 
-    <!-- button -->
-    <div class="btn-container">
-      <button @click="placeOrder" class="btn green">Place order 🤠</button>
-    </div>
+  <div v-else>
+    Shopping cart is empty!
+    <br>
+    Add Something delicious 🍔
+  </div>
+
+  <!-- button -->
+  <div class="btn-container">
+    <button @click="placeOrder" class="btn green">Place order 🤠</button>
+  </div>
 </template>
 
 <style scoped>
